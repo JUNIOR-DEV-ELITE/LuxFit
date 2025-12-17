@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LuxFit Elite | Premium Fitness Club</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --charcoal: #1a1a1a;
+        --black: #000000;
+        --gold: #d4af37;
+        --dark-red: #8b0000;
+        --white: #ffffff;
+        --light-gray: #f5f5f5;
+        --dark-gray: #333333;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        line-height: 1.6;
+        color: var(--white);
+        background-color: var(--black);
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        margin-bottom: 1.5rem;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        position: relative;
+        color: var(--white);
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--gold);
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: var(--gold);
+        color: var(--black);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+      }
+
+      .btn:hover {
+        background-color: var(--dark-red);
+        color: var(--white);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 2px solid var(--gold);
+        color: var(--gold);
+      }
+
+      .btn-outline:hover {
+        background-color: var(--gold);
+        color: var(--black);
+      }
+
+      /* Header Styles */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 20px 0;
+        transition: all 0.3s ease;
+        background-color: rgba(0, 0, 0, 0.9);
+      }
+
+      header.scrolled {
+        padding: 15px 0;
+        background-color: rgba(0, 0, 0, 0.95);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--gold);
+        font-family: "Playfair Display", serif;
+      }
+
+      .logo span {
+        color: var(--white);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 30px;
+      }
+
+      .nav-links a {
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--gold);
+      }
+
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--white);
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        position: relative;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+        color: var(--white);
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2.5rem;
+        color: #cccccc;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero .btn {
+        margin: 0 10px;
+      }
+
+      /* About Section */
+      .about {
+        background-color: var(--charcoal);
+      }
+
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+      }
+
+      .about-text h2 {
+        font-size: 2.5rem;
+        color: var(--gold);
+      }
+
+      .about-features {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-top: 30px;
+      }
+
+      .feature {
+        display: flex;
+        align-items: center;
+      }
+
+      .feature i {
+        color: var(--gold);
+        font-size: 1.5rem;
+        margin-right: 15px;
+      }
+
+      .about-image {
+        height: 400px;
+        background: url("https://images.unsplash.com/photo-1540497077202-7c8a3999166f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80");
+        background-size: cover;
+        background-position: center;
+        border-radius: 5px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Programs Section */
+      .programs {
+        background-color: var(--black);
+      }
+
+      .programs-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .program-card {
+        background-color: var(--charcoal);
+        border-radius: 5px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+      }
+
+      .program-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .program-image {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .program-content {
+        padding: 25px;
+      }
+
+      .program-content h3 {
+        color: var(--gold);
+        font-size: 1.5rem;
+      }
+
+      /* Trainers Section */
+      .trainers {
+        background-color: var(--charcoal);
+      }
+
+      .trainers-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      .trainer-card {
+        background-color: var(--black);
+        border-radius: 5px;
+        overflow: hidden;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .trainer-card:hover {
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+      }
+
+      .trainer-image {
+        height: 300px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .trainer-info {
+        padding: 25px;
+      }
+
+      .trainer-info h3 {
+        color: var(--gold);
+      }
+
+      .trainer-specialty {
+        color: var(--dark-red);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.9rem;
+      }
+
+      /* Membership Section */
+      .membership {
+        background-color: var(--black);
+      }
+
+      .membership-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      .membership-card {
+        background-color: var(--charcoal);
+        border-radius: 5px;
+        padding: 40px 30px;
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .membership-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .membership-card.popular {
+        border: 2px solid var(--gold);
+      }
+
+      .popular-tag {
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--gold);
+        color: var(--black);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+      }
+
+      .membership-card h3 {
+        font-size: 1.8rem;
+        color: var(--gold);
+      }
+
+      .price {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--white);
+        margin: 20px 0;
+      }
+
+      .price span {
+        font-size: 1rem;
+        color: #cccccc;
+      }
+
+      .membership-features {
+        list-style: none;
+        margin-bottom: 30px;
+      }
+
+      .membership-features li {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .membership-features li:last-child {
+        border-bottom: none;
+      }
+
+      /* CTA Section */
+      .cta {
+        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+          url("https://images.unsplash.com/photo-1534367507877-0edd93bd013b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80");
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+      }
+
+      .cta h2 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .cta p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 2.5rem;
+        color: #cccccc;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--charcoal);
+        padding: 60px 0 30px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-column h3 {
+        color: var(--gold);
+        font-size: 1.3rem;
+        margin-bottom: 25px;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a:hover {
+        color: var(--gold);
+      }
+
+      .contact-info {
+        list-style: none;
+      }
+
+      .contact-info li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .contact-info i {
+        color: var(--gold);
+        margin-right: 10px;
+        width: 20px;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background-color: var(--gold);
+        color: var(--black);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #999;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Styles */
+      @media screen and (max-width: 992px) {
+        .hero h1 {
+          font-size: 3rem;
+        }
+
+        .about-content {
+          grid-template-columns: 1fr;
+        }
+
+        .about-image {
+          height: 300px;
+          order: -1;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .mobile-menu-btn {
+          display: block;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 70px;
+          left: 0;
+          width: 100%;
+          background-color: rgba(0, 0, 0, 0.95);
+          flex-direction: column;
+          align-items: center;
+          padding: 20px 0;
+          transform: translateY(-100%);
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease;
+        }
+
+        .nav-links.active {
+          transform: translateY(0);
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .nav-links li {
+          margin: 15px 0;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .section {
+          padding: 60px 0;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+      }
+
+      @media screen and (max-width: 576px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .btn {
+          padding: 10px 20px;
+        }
+
+        .about-features {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="header">
+      <div class="container header-container">
+        <a href="#" class="logo">Lux<span>Fit</span> Elite</a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#trainers">Trainers</a></li>
+          <li><a href="#membership">Membership</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <h1>REDEFINE YOUR LIMITS</h1>
+          <p>
+            Experience unparalleled luxury and world-class training at LuxFit
+            Elite, where elite athletes and discerning individuals converge to
+            achieve extraordinary results.
+          </p>
+          <a href="#membership" class="btn">Become a Member</a>
+          <a href="#programs" class="btn btn-outline">View Programs</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+      <div class="container">
+        <h2 class="section-title">About LuxFit Elite</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <h2>Where Luxury Meets Performance</h2>
+            <p>
+              LuxFit Elite is not just a gym; it's a sanctuary for those who
+              demand excellence. Our state-of-the-art facility spans 30,000
+              square feet of premium training space, equipped with the latest
+              technology and amenities.
+            </p>
+            <p>
+              We offer a holistic approach to fitness, combining cutting-edge
+              equipment with personalized training, recovery facilities, and
+              wellness services.
+            </p>
+            <div class="about-features">
+              <div class="feature">
+                <i class="fas fa-dumbbell"></i>
+                <p>Premium Equipment</p>
+              </div>
+              <div class="feature">
+                <i class="fas fa-user-tie"></i>
+                <p>Expert Trainers</p>
+              </div>
+              <div class="feature">
+                <i class="fas fa-spa"></i>
+                <p>Recovery Spa</p>
+              </div>
+              <div class="feature">
+                <i class="fas fa-concierge-bell"></i>
+                <p>Concierge Service</p>
+              </div>
+            </div>
+          </div>
+          <div class="about-image"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="section programs" id="programs">
+      <div class="container">
+        <h2 class="section-title">Training Programs</h2>
+        <div class="programs-container">
+          <div class="program-card">
+            <div
+              class="program-image"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1534367507877-0edd93bd013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+              "
+            ></div>
+            <div class="program-content">
+              <h3>Executive Fitness</h3>
+              <p>
+                Tailored programs for busy professionals, combining efficient
+                workouts with stress management and nutritional guidance.
+              </p>
+            </div>
+          </div>
+          <div class="program-card">
+            <div
+              class="program-image"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+              "
+            ></div>
+            <div class="program-content">
+              <h3>Performance Athlete</h3>
+              <p>
+                Advanced training protocols designed for competitive athletes
+                looking to maximize their physical potential.
+              </p>
+            </div>
+          </div>
+          <div class="program-card">
+            <div
+              class="program-image"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+              "
+            ></div>
+            <div class="program-content">
+              <h3>Luxury Wellness</h3>
+              <p>
+                A holistic approach combining personal training, nutrition
+                planning, recovery therapies, and mindfulness practices.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trainers Section -->
+    <section class="section trainers" id="trainers">
+      <div class="container">
+        <h2 class="section-title">Elite Trainers</h2>
+        <div class="trainers-container">
+          <div class="trainer-card">
+            <div
+              class="trainer-image"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+              "
+            ></div>
+            <div class="trainer-info">
+              <h3>Marcus Sterling</h3>
+              <p class="trainer-specialty">Strength & Conditioning</p>
+              <p>
+                Former professional athlete with 15+ years of training
+                experience specializing in athletic performance.
+              </p>
+            </div>
+          </div>
+          <div class="trainer-card">
+            <div
+              class="trainer-image"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1594381898411-846e7d193883?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+              "
+            ></div>
+            <div class="trainer-info">
+              <h3>Isabella Moreau</h3>
+              <p class="trainer-specialty">Holistic Wellness</p>
+              <p>
+                Certified in multiple disciplines including yoga, nutrition, and
+                recovery therapies for a complete wellness approach.
+              </p>
+            </div>
+          </div>
+          <div class="trainer-card">
+            <div
+              class="trainer-image"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1548690312-e3b507d8c110?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+              "
+            ></div>
+            <div class="trainer-info">
+              <h3>David Chen</h3>
+              <p class="trainer-specialty">Executive Fitness</p>
+              <p>
+                Specializes in creating efficient, results-driven programs for
+                high-performing professionals with limited time.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Membership Section -->
+    <section class="section membership" id="membership">
+      <div class="container">
+        <h2 class="section-title">Membership Plans</h2>
+        <div class="membership-container">
+          <div class="membership-card">
+            <h3>Essential</h3>
+            <div class="price">$199<span>/month</span></div>
+            <ul class="membership-features">
+              <li>Access to premium equipment</li>
+              <li>Locker room with luxury amenities</li>
+              <li>Group classes (up to 4 per week)</li>
+              <li>Complimentary towel service</li>
+              <li>Monthly fitness assessment</li>
+            </ul>
+            <a href="#" class="btn btn-outline">Select Plan</a>
+          </div>
+          <div class="membership-card popular">
+            <div class="popular-tag">Most Popular</div>
+            <h3>Elite</h3>
+            <div class="price">$399<span>/month</span></div>
+            <ul class="membership-features">
+              <li>All Essential benefits</li>
+              <li>4 personal training sessions/month</li>
+              <li>Unlimited group classes</li>
+              <li>Access to recovery spa</li>
+              <li>Nutrition consultation</li>
+              <li>Priority booking</li>
+            </ul>
+            <a href="#" class="btn">Select Plan</a>
+          </div>
+          <div class="membership-card">
+            <h3>Executive</h3>
+            <div class="price">$799<span>/month</span></div>
+            <ul class="membership-features">
+              <li>All Elite benefits</li>
+              <li>Unlimited personal training</li>
+              <li>24/7 exclusive access</li>
+              <li>Private training suite</li>
+              <li>Monthly massage therapy</li>
+              <li>Concierge service</li>
+            </ul>
+            <a href="#" class="btn btn-outline">Select Plan</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta" id="cta">
+      <div class="container">
+        <h2>BEGIN YOUR TRANSFORMATION</h2>
+        <p>
+          Schedule a private tour of LuxFit Elite and experience the difference
+          of luxury fitness. Our concierge team will design a personalized
+          introductory session to match your goals.
+        </p>
+        <a href="#contact" class="btn">Book a Private Tour</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>LuxFit Elite</h3>
+            <p>
+              Where luxury meets performance. The premier destination for those
+              who demand excellence in fitness and wellness.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#programs">Programs</a></li>
+              <li><a href="#trainers">Trainers</a></li>
+              <li><a href="#membership">Membership</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Contact Us</h3>
+            <ul class="contact-info">
+              <li>
+                <i class="fas fa-map-marker-alt"></i> 123 Luxury Avenue,
+                Prestige District
+              </li>
+              <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+              <li><i class="fas fa-envelope"></i> info@luxfitelite.com</li>
+              <li><i class="fas fa-clock"></i> Mon-Sun: 5AM - 11PM</li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>
+            &copy; 2023 LuxFit Elite. All rights reserved. | Designed as a
+            portfolio example
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const navLinks = document.getElementById("navLinks");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        mobileMenuBtn.innerHTML = navLinks.classList.contains("active")
+          ? '<i class="fas fa-times"></i>'
+          : '<i class="fas fa-bars"></i>';
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+          mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+      });
+
+      // Header scroll effect
+      const header = document.getElementById("header");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 100) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
